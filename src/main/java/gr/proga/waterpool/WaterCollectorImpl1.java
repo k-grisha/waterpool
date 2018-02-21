@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class WaterCollector1 {
+public class WaterCollectorImpl1 implements WaterCollector{
 	private static final Integer MAX_SIZE = 32000;
 
-	public static int handle(List<Integer> hills) {
+	@Override
+	public int handle(List<Integer> hills) {
 		Integer maxHill = getMaxHillAndValid(hills);
 		if (maxHill == 0) {
 			return 0;
@@ -34,7 +35,7 @@ public class WaterCollector1 {
 		return collector;
 	}
 
-	private static Integer getMaxHillAndValid(List<Integer> hills) {
+	private Integer getMaxHillAndValid(List<Integer> hills) {
 		if (hills.size() > MAX_SIZE) {
 			throw new IllegalArgumentException("Landscape too big. Max = " + MAX_SIZE);
 		}
@@ -49,7 +50,7 @@ public class WaterCollector1 {
 		return maxHill;
 	}
 
-	private static Integer getMinHillAndValid(List<Integer> hills) {
+	private Integer getMinHillAndValid(List<Integer> hills) {
 		Integer minHill = hills.stream().min(Comparator.naturalOrder()).orElse(0);
 		if (minHill < 0) {
 			throw new IllegalArgumentException("Pits too low");

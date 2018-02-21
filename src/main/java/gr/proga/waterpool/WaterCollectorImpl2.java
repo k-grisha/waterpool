@@ -2,10 +2,10 @@ package gr.proga.waterpool;
 
 import java.util.List;
 
-public class WaterCollector2 {
+public class WaterCollectorImpl2 implements WaterCollector {
 
-    public static int handle(List<Integer> hills) {
-
+    @Override
+    public int handle(List<Integer> hills) {
         int collector = 0;
         int potential = 0;
         int previousHill = 0;
