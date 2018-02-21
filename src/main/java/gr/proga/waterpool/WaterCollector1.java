@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class WaterCollector {
+public class WaterCollector1 {
 	private static final Integer MAX_SIZE = 32000;
 
 	public static int handle(List<Integer> hills) {
