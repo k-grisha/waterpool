@@ -37,7 +37,7 @@ public class WaterCollectorTest {
     }
 
     private void handle_test(WaterCollector waterCollector) {
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 100; i++) {
             Assert.assertEquals(0, waterCollector.handle(Collections.emptyList()));
             Assert.assertEquals(0, waterCollector.handle(Arrays.asList(5, 2)));
             Assert.assertEquals(0, waterCollector.handle(Arrays.asList(0, 0, 0, 0)));
@@ -55,14 +55,15 @@ public class WaterCollectorTest {
     @Test
     public void bugFix() {
         Assert.assertEquals(8, wc2.handle(Arrays.asList(6, 0, 2, 5)));
+        Assert.assertEquals(8, wc1.handle(Arrays.asList(6, 0, 2, 5)));
     }
 
     @Test
     public void performance_test() {
         Random rnd = new Random();
         List<Integer> hills = new ArrayList<>(32000);
-        for (int i = 0; i < 7; i++) {
-            hills.add(rnd.nextInt(10));
+        for (int i = 0; i < 32000; i++) {
+            hills.add(rnd.nextInt(32000));
         }
 
         Stopwatch stopwatch1 = Stopwatch.createStarted();
@@ -72,7 +73,6 @@ public class WaterCollectorTest {
         Stopwatch stopwatch2 = Stopwatch.createStarted();
         int res2 = wc2.handle(hills);
         stopwatch2.stop();
-        System.out.println(hills);
         Assert.assertEquals(res1, res2);
 
         System.out.println("res= " + res1 + " t1= " + stopwatch1 + " t2= " + stopwatch2);
