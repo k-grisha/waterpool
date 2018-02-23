@@ -4,12 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WaterCollectorImpl1 implements WaterCollector {
-	public static final Integer MAX_SIZE = 32000;
 
 	@Override
 	public int handle(List<Integer> hills) {
+		validate(hills);
 		Integer collector = 0;
-
 		for (int h = 0; h <= MAX_SIZE; h++) {
 			List<Integer> hillsSection = new ArrayList<>(hills.size());
 			for (int i = 0; i < hills.size(); i++) {
