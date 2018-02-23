@@ -14,12 +14,22 @@ public class WaterCollectorTest {
 	private WaterCollector wc2 = new WaterCollectorImpl2();
 
 	@Test(expected = IllegalArgumentException.class)
-	public void handle_exception() {
+	public void handle_sizeTooBig_exception() {
 		List<Integer> hills = new ArrayList<>(MAX_SIZE + 1);
 		for (int i = 0; i < MAX_SIZE + 1; i++) {
 			hills.add(1);
 		}
 		wc1.handle(hills);
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void handle_hillTooBig_exception() {
+		wc1.handle(Arrays.asList(5, MAX_SIZE + 1));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void handle_hillTooSmall_exception() {
+		wc1.handle(Arrays.asList(5, -1));
 	}
 
 	@Test
@@ -52,7 +62,7 @@ public class WaterCollectorTest {
 		stopwatch2.stop();
 
 		Assert.assertEquals(res1, res2);
-		System.out.println("res= " + res1 + " t1= " + stopwatch1 + " t2= " + stopwatch2);
+		System.out.println(" t1= " + stopwatch1 + " t2= " + stopwatch2);
 	}
 
 	private void handle_test(WaterCollector waterCollector) {
