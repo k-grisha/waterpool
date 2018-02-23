@@ -8,6 +8,7 @@ public class WaterCollectorImpl2 implements WaterCollector {
 
 	@Override
 	public int handle(List<Integer> hills) {
+		validate(hills);
 		Liquid liquid = new Liquid();
 		Integer previousHill = 0;
 		Integer peak = 0;
