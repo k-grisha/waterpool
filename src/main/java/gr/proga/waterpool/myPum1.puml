@@ -1,0 +1,22 @@
+@startuml
+'actor user
+component [vbc-discovery]<<Сервис регистрации>>#ffffff
+component [vbc-cloud-admin]<<Сервис администрирования>>#ffffff
+component [vbc-rest]<<Основное приложение ВБЦ>>
+component [vbc-sign-check]<<Сервис проверки подписи>>
+component [vbc-eda]<<Не реализовано>>#888888
+component [vbc-report]<<Не реализовано>>#888888
+
+
+
+[vbc-discovery] <==[vbc-cloud-admin]
+[vbc-discovery] <==[vbc-rest]
+[vbc-discovery] <==[vbc-sign-check]
+[vbc-discovery] <==[vbc-report]
+[vbc-discovery] <==[vbc-eda]
+
+
+
+
+
+@enduml
